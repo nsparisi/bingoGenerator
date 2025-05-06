@@ -36,6 +36,12 @@ public class Bingo : MonoBehaviour
     void OnClick_Shuffle()
     {
         var lines = InputField_BingoChoices.text.Split("\r\n").ToList();
+
+        if(lines.Count == 1)
+        {
+            lines = lines[0].Split("\n").ToList();
+        }
+
         lines = lines.OrderBy(line => UnityEngine.Random.value).ToList();
         InputField_BingoChoices.SetTextWithoutNotify(string.Join("\r\n", lines));
     }
